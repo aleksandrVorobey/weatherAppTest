@@ -12,8 +12,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        print(URLFactory.url(lat: 55.75, lon: 37.61))
     }
 
-
+    
 }
 
