@@ -15,11 +15,12 @@ struct URLFactory {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.openweathermap.org"
-        components.path = "/data/2.5/weather"
+        components.path = "/data/2.5/onecall"
         components.queryItems = [URLQueryItem(name: "lat", value: "\(lat)"),
                                  URLQueryItem(name: "lon", value: "\(lon)"),
-                                 URLQueryItem(name: "units", value: "imperial"),
-                                 URLQueryItem(name: "lang", value: "ru"),
+                                 URLQueryItem(name: "units", value: "standard"),
+                                 URLQueryItem(name: "exclude", value: "minutely"),
+                                 //URLQueryItem(name: "lang", value: "en"),
                                  URLQueryItem(name: "appid", value: "\(apiKey)")]
         return components.url!
     }
