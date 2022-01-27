@@ -42,22 +42,14 @@ struct Current: Codable {
 
 // MARK: - Weather
 struct Weather: Codable {
-    //let main: Main
     let weatherDescription: String
     let icon: String
 
     enum CodingKeys: String, CodingKey {
-        //case main
         case weatherDescription = "description"
         case icon
     }
 }
-
-//enum Main: String, Codable {
-//    case clouds = "Clouds"
-//    case snow = "Snow"
-//    case empty = ""
-//}
 
 //enum Description: String, Codable {
 //    case небольшойСнег = "небольшой снег"
@@ -79,7 +71,6 @@ struct Hourly: Codable {
 
 // MARK: - Daily
 struct Daily: Codable {
-    
     let dt: Int
     let temp: Temp
     let humidity: Int

@@ -12,9 +12,14 @@ final class ViewModel: NSObject {
     private var weatherModel: WeatherModel?
     private var currentWeather: Weather?
     private var dailyWeather: Daily?
+    private var dailyWeatherArray = [Daily]()
+    private var hourlyWeatherArray = [Hourly]()
+    
+    
+    //MARK: - Property for main model
     
     var currentTempString: String {
-        return String(weatherModel?.current.temp ?? 0.0)
+        return String(format: "%.f", weatherModel?.current.temp ?? 0.0) + "°"
     }
     
     var locationNameString: String {
@@ -22,15 +27,36 @@ final class ViewModel: NSObject {
     }
     
     var hightTempString: String {
-        return String(format: "%.f", dailyWeather?.temp.max ?? 0.0)
+        return String(format: "%.f", dailyWeather?.temp.max ?? 0.0) + "°"
     }
     
     var lowTempString: String {
-        return String(format: "%.f", dailyWeather?.temp.min ?? 0.0)
+        return String(format: "%.f", dailyWeather?.temp.min ?? 0.0) + "°"
     }
     
     var descriptionString: String {
         return String(currentWeather?.weatherDescription ?? "__")
+    }
+    
+    
+    //MARK: - Configure hourly weather 
+    func numberOfItemsHourly() -> Int {
+        return hourlyWeatherArray.count
+    }
+    
+    func cellHourlyViewModel(at indexPath: IndexPath) -> HourlyCollectionCellViewModel {
+        let hourlyWeatherModel = hourlyWeatherArray[indexPath.item]
+        return HourlyCollectionCellViewModel(hourlyWeatherModel: hourlyWeatherModel)
+    }
+    
+    //MARK: - Configure daily weather
+    func numberOfRowsDaily() -> Int {
+        return dailyWeatherArray.count
+    }
+    
+    func cellDailyViewModel(at indexPath: IndexPath) -> DailyTableViewCellViewModel {
+        let dailyWeatherModel = dailyWeatherArray[indexPath.row]
+        return DailyTableViewCellViewModel(dailyWeatherModel: dailyWeatherModel)
     }
     
     //MARK: - Get weather
@@ -42,6 +68,8 @@ final class ViewModel: NSObject {
                     self.weatherModel = weather
                     self.currentWeather = weather.current.weather.first
                     self.dailyWeather = weather.daily.first
+                    self.dailyWeatherArray = weather.daily
+                    self.hourlyWeatherArray = weather.hourly
                     completion()
                 }
             case .failure(let error):

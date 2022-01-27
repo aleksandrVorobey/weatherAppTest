@@ -20,7 +20,7 @@ struct URLFactory {
         components.path = pathURL
         components.queryItems = [URLQueryItem(name: "lat", value: "\(lat)"),
                                  URLQueryItem(name: "lon", value: "\(lon)"),
-                                 URLQueryItem(name: "units", value: "standard"),
+                                 URLQueryItem(name: "units", value: "metric"),
                                  URLQueryItem(name: "exclude", value: "minutely"),
                                  //URLQueryItem(name: "lang", value: "ru"),
                                  URLQueryItem(name: "appid", value: "\(apiKey)")]

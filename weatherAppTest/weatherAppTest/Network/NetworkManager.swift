@@ -10,6 +10,7 @@ import Foundation
 final class NetworkManager<T: Codable> {
     static func baseRequest(for url: URL, completion: @escaping (Result<T, NetworkError>) -> Void) {
         URLSession.shared.dataTask(with: url) { data, response, error in
+            print(url)
             guard error == nil else {
                 completion(.failure(.error(error: error!.localizedDescription)))
                 return
