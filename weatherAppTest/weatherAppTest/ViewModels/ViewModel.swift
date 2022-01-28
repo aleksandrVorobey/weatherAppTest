@@ -15,6 +15,8 @@ final class ViewModel: NSObject {
     private var dailyWeatherArray = [Daily]()
     private var hourlyWeatherArray = [Hourly]()
     
+    private let backupData = FileManager.default.urls(for: .documentDirectory,
+                                                         in: .userDomainMask)[0].appendingPathComponent("WeatherData.plist")
     
     //MARK: - Property for main model
     var currentTempString: String {
@@ -37,7 +39,7 @@ final class ViewModel: NSObject {
         return currentWeather?.weatherDescription ?? "Unknow"
     }
     
-    //MARK: - Configure hourly weather 
+    //MARK: - Configure hourly weather
     func numberOfItemsHourly() -> Int {
         return hourlyWeatherArray.count
     }
@@ -57,6 +59,35 @@ final class ViewModel: NSObject {
         return DailyTableViewCellViewModel(dailyWeatherModel: dailyWeatherModel)
     }
     
+    //MARK: - Backup
+    private func saveBackup(data: WeatherModel) {
+        do {
+            let data = try PropertyListEncoder().encode(data)
+            try data.write(to: backupData)
+            print("Save")
+        }
+        catch let error {
+            print(error)
+        }
+    }
+    
+    private func loadBackup(){
+        guard let data = try? Data(contentsOf: backupData) else {
+            return
+        }
+        do {
+            let backup = try PropertyListDecoder().decode(WeatherModel.self, from: data)
+            weatherModel = backup
+            currentWeather = backup.current.weather.first
+            dailyWeather = backup.daily.first
+            dailyWeatherArray = backup.daily
+            hourlyWeatherArray = backup.hourly
+            print("Load")
+        } catch let error {
+            print(error)
+        }
+    }
+    
     //MARK: - Get weather
     func getWeather(lat: Double, lon: Double, completion: @escaping () -> Void) {
         NetworkManager<WeatherModel>.baseRequest(for: URLFactory.url(lat: lat, lon: lon)) { result in
@@ -68,10 +99,13 @@ final class ViewModel: NSObject {
                     self.dailyWeather = weather.daily.first
                     self.dailyWeatherArray = weather.daily
                     self.hourlyWeatherArray = weather.hourly
+                    self.saveBackup(data: weather)
                     completion()
                 }
             case .failure(let error):
                 print("Error: - \(error.localizedDescription)")
+                self.loadBackup()
+                completion()
             }
         }
     }
