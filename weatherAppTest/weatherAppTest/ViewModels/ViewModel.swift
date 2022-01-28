@@ -62,7 +62,7 @@ final class ViewModel: NSObject {
     //MARK: - Backup
     private func saveBackup(data: WeatherModel) {
         do {
-            let data = try PropertyListEncoder().encode(data)
+            let data = try JSONEncoder().encode(data)
             try data.write(to: backupData)
             print("Save")
         }
@@ -76,12 +76,12 @@ final class ViewModel: NSObject {
             return
         }
         do {
-            let backup = try PropertyListDecoder().decode(WeatherModel.self, from: data)
-            weatherModel = backup
-            currentWeather = backup.current.weather.first
-            dailyWeather = backup.daily.first
-            dailyWeatherArray = backup.daily
-            hourlyWeatherArray = backup.hourly
+            let backupWeatherModel = try JSONDecoder().decode(WeatherModel.self, from: data)
+            weatherModel = backupWeatherModel
+            currentWeather = backupWeatherModel.current.weather.first
+            dailyWeather = backupWeatherModel.daily.first
+            dailyWeatherArray = backupWeatherModel.daily
+            hourlyWeatherArray = backupWeatherModel.hourly
             print("Load")
         } catch let error {
             print(error)
