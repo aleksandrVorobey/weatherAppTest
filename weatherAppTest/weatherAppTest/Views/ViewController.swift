@@ -16,8 +16,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var lowTempLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
     
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var collectionView: UICollectionView!
     
     private let locationManager = CLLocationManager()
@@ -27,6 +28,7 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicator.startAnimating()
         setupLocationManager()
         setupTableView()
         setupCollectionView()
@@ -57,7 +59,7 @@ class ViewController: UIViewController {
     private func setupWeatherUI() {
         currentTempLabel.text = viewModel.currentTempString
         locationNameLabel.text = viewModel.locationNameString
-        descriptionLabel.text = viewModel.descriptionString
+        descriptionLabel.text = viewModel.descriptionWeatherString
         hightTempLabel.text = viewModel.hightTempString
         lowTempLabel.text = viewModel.lowTempString
     }
@@ -75,6 +77,8 @@ extension ViewController: CLLocationManagerDelegate {
             let lon = currentLocation.coordinate.longitude
             viewModel.getWeather(lat: lat, lon: lon) {
                 DispatchQueue.main.async {
+                    self.activityIndicator.stopAnimating()
+                    self.activityIndicator.isHidden = true
                     self.setupWeatherUI()
                     self.tableView.reloadData()
                     self.collectionView.reloadData()
@@ -88,8 +92,8 @@ extension ViewController: CLLocationManagerDelegate {
 extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DailyTableViewCell.identifier, for: indexPath) as! DailyTableViewCell
-        let cellViewModel = viewModel.cellDailyViewModel(at: indexPath)
-        cell.configureCell(viewModel: cellViewModel)
+        let cellDailyViewModel = viewModel.cellDailyViewModel(at: indexPath)
+        cell.configureDailyCell(viewModel: cellDailyViewModel)
         return cell
     }
     

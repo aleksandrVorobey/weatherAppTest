@@ -19,13 +19,10 @@ class DailyTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
     }
     
     static func nib() -> UINib {
@@ -33,11 +30,12 @@ class DailyTableViewCell: UITableViewCell {
                      bundle: nil)
     }
     
-    func configureCell(viewModel: DailyTableViewCellViewModel) {
+    func configureDailyCell(viewModel: DailyTableViewCellViewModel) {
         dayLabel.text = viewModel.dayString
         humidityLabel.text = viewModel.humidityString
         hightTempLabel.text = viewModel.hightTempString
         lowTempLabel.text = viewModel.lowTempString
+        iconImage.image = UIImage(systemName: viewModel.iconString)
     }
     
 }

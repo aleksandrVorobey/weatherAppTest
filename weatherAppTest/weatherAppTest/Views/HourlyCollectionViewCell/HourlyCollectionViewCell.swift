@@ -18,7 +18,6 @@ class HourlyCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
     
     static func nib() -> UINib {
@@ -30,6 +29,7 @@ class HourlyCollectionViewCell: UICollectionViewCell {
         timeLabel.text = viewModel.timeString
         humidityLabel.text = viewModel.humidityString
         tempLabel.text = viewModel.tempString
+        iconImageView.image = UIImage(systemName: viewModel.iconString)
     }
 
 }

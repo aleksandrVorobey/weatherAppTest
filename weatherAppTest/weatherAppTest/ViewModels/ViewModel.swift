@@ -17,27 +17,25 @@ final class ViewModel: NSObject {
     
     
     //MARK: - Property for main model
-    
     var currentTempString: String {
         return String(format: "%.f", weatherModel?.current.temp ?? 0.0) + "°"
     }
     
     var locationNameString: String {
-        return String(weatherModel?.timezone ?? "__")
+        return weatherModel?.timezone.deletingPrefix() ?? "Unknow"
     }
     
     var hightTempString: String {
-        return String(format: "%.f", dailyWeather?.temp.max ?? 0.0) + "°"
+        return "H: " + String(format: "%.f", dailyWeather?.temp.max ?? 0.0) + "°"
     }
     
     var lowTempString: String {
-        return String(format: "%.f", dailyWeather?.temp.min ?? 0.0) + "°"
+        return "L: " + String(format: "%.f", dailyWeather?.temp.min ?? 0.0) + "°"
     }
     
-    var descriptionString: String {
-        return String(currentWeather?.weatherDescription ?? "__")
+    var descriptionWeatherString: String {
+        return currentWeather?.weatherDescription ?? "Unknow"
     }
-    
     
     //MARK: - Configure hourly weather 
     func numberOfItemsHourly() -> Int {

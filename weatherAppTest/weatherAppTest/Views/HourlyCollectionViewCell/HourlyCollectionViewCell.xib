@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -17,25 +18,25 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qOD-FU-xXY" userLabel="Time Label">
-                        <rect key="frame" x="14" y="8" width="42" height="21"/>
+                        <rect key="frame" x="14" y="3" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sAv-5J-eLd" userLabel="Humidity Label">
-                        <rect key="frame" x="14" y="29" width="42" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                        <rect key="frame" x="16.5" y="24" width="37.5" height="18"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" systemColor="linkColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mtl-r8-1ZZ" userLabel="Temp Label">
-                        <rect key="frame" x="14" y="91" width="42" height="21"/>
+                        <rect key="frame" x="14" y="96" width="42" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PxU-NS-Tm0" userLabel="Icon Image View">
-                        <rect key="frame" x="20" y="67" width="30" height="30"/>
+                        <rect key="frame" x="20" y="65" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="b3z-rW-rfw"/>
                             <constraint firstAttribute="width" constant="30" id="fkZ-dB-f1I"/>
@@ -44,15 +45,15 @@
                 </subviews>
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <color key="backgroundColor" red="1" green="0.91793589320000002" blue="0.62247786260000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="PxU-NS-Tm0" firstAttribute="centerY" secondItem="ZTg-uK-7eu" secondAttribute="centerY" id="9qd-R6-S7v"/>
                 <constraint firstItem="PxU-NS-Tm0" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="FUn-q6-mUK"/>
                 <constraint firstItem="Mtl-r8-1ZZ" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="ITc-Lb-DxX"/>
                 <constraint firstItem="sAv-5J-eLd" firstAttribute="top" secondItem="qOD-FU-xXY" secondAttribute="bottom" id="amg-x5-B9i"/>
-                <constraint firstItem="qOD-FU-xXY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="gLS-vp-ArG"/>
+                <constraint firstAttribute="bottom" secondItem="PxU-NS-Tm0" secondAttribute="bottom" constant="25" id="fGv-4k-C7Z"/>
+                <constraint firstItem="qOD-FU-xXY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="3" id="gLS-vp-ArG"/>
                 <constraint firstItem="sAv-5J-eLd" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="msd-95-pz5"/>
-                <constraint firstAttribute="bottom" secondItem="Mtl-r8-1ZZ" secondAttribute="bottom" constant="8" id="sg9-lP-ced"/>
+                <constraint firstAttribute="bottom" secondItem="Mtl-r8-1ZZ" secondAttribute="bottom" constant="3" id="sg9-lP-ced"/>
                 <constraint firstItem="qOD-FU-xXY" firstAttribute="centerX" secondItem="ZTg-uK-7eu" secondAttribute="centerX" id="tlL-IR-WIL"/>
             </constraints>
             <size key="customSize" width="150" height="198"/>
@@ -65,4 +66,9 @@
             <point key="canvasLocation" x="314.49275362318843" y="17.410714285714285"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="linkColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

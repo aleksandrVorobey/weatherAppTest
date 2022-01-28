@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 class DailyTableViewCellViewModel {
     var dailyWeatherModel: Daily?
     
@@ -25,6 +24,10 @@ class DailyTableViewCellViewModel {
     
     var dayString: String {
         return String(Date(timeIntervalSince1970: TimeInterval(dailyWeatherModel?.dt ?? 0)).getDayForDate())
+    }
+    
+    var iconString: String {
+        return dailyWeatherModel?.weather.first?.icon.getWeatherIcon() ?? "questionmark.circle.fill"
     }
     
     init(dailyWeatherModel: Daily) {

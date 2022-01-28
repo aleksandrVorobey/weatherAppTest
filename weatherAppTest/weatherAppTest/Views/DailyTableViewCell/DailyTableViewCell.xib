@@ -23,14 +23,14 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mus-fO-SB6" userLabel="IconImage View">
-                        <rect key="frame" x="158" y="15" width="30" height="30"/>
+                        <rect key="frame" x="136.5" y="15" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="30" id="SbA-4h-7fb"/>
                             <constraint firstAttribute="width" constant="30" id="rma-80-ZbK"/>
                         </constraints>
                     </imageView>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Beu-PW-RIe" userLabel="Temp Stack View">
-                        <rect key="frame" x="261.5" y="20" width="48.5" height="20.5"/>
+                        <rect key="frame" x="240" y="20" width="70" height="20.5"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F4r-c1-ciw" userLabel="HightTempLabel">
                                 <rect key="frame" x="0.0" y="0.0" width="20.5" height="20.5"/>
@@ -39,15 +39,18 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CJN-gc-IVn" userLabel="LowTempLabel">
-                                <rect key="frame" x="30.5" y="0.0" width="18" height="20.5"/>
+                                <rect key="frame" x="52" y="0.0" width="18" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="70" id="6Ch-PV-QH5"/>
+                        </constraints>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ICV-Y6-YEA" userLabel="HumidityLabel">
-                        <rect key="frame" x="193" y="20" width="28.5" height="20.5"/>
+                        <rect key="frame" x="171.5" y="20" width="28.5" height="20.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>

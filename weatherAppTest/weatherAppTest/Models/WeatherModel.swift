@@ -17,27 +17,8 @@ struct WeatherModel: Codable {
 
 // MARK: - Current
 struct Current: Codable {
-    let dt: Int
     let temp: Double
-    let feelsLike: Double
-    let pressure: Int
-    let humidity: Int
-    let dewPoint: Double
-    let clouds: Int
-    let windSpeed: Double
-    let windDeg: Int
     let weather: [Weather]
-
-    enum CodingKeys: String, CodingKey {
-        case dt, temp
-        case feelsLike = "feels_like"
-        case pressure, humidity
-        case dewPoint = "dew_point"
-        case clouds
-        case windSpeed = "wind_speed"
-        case windDeg = "wind_deg"
-        case weather
-    }
 }
 
 // MARK: - Weather
@@ -51,22 +32,12 @@ struct Weather: Codable {
     }
 }
 
-//enum Description: String, Codable {
-//    case небольшойСнег = "небольшой снег"
-//    case облачноСПрояснениями = "облачно с прояснениями"
-//    case пасмурно = "пасмурно"
-//    case снег = "снег"
-//    case empty = ""
-//}
-
 // MARK: - Hourly
 struct Hourly: Codable {
     let dt: Int
     let temp: Double
     let humidity: Int
     let weather: [Weather]
-    let pop: Double
-    
 }
 
 // MARK: - Daily
@@ -75,8 +46,6 @@ struct Daily: Codable {
     let temp: Temp
     let humidity: Int
     let weather: [Weather]
-    let pop: Double
-    
 }
 
 // MARK: - Temp

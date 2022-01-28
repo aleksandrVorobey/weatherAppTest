@@ -22,7 +22,7 @@ struct URLFactory {
                                  URLQueryItem(name: "lon", value: "\(lon)"),
                                  URLQueryItem(name: "units", value: "metric"),
                                  URLQueryItem(name: "exclude", value: "minutely"),
-                                 //URLQueryItem(name: "lang", value: "ru"),
+                                 URLQueryItem(name: "lang", value: "ru"),
                                  URLQueryItem(name: "appid", value: "\(apiKey)")]
         return components.url!
     }
