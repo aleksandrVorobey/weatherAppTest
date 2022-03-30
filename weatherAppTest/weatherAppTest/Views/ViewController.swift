@@ -32,6 +32,7 @@ class ViewController: UIViewController {
         setupLocationManager()
         setupTableView()
         setupCollectionView()
+        print("Weather start")
     }
     
 // MARK: - Setup tableView and collectionView
